@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="fw_purchase_order_view_form_inherit" model="ir.ui.view">
+        <field name="name">fw.purchase.order.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_rfq_send']" position="before">
+                <button name="purchase_uom_round_up" string="Round up to Purchase UOM" type="object" states="draft" groups="base.group_user"/>
+            </xpath>
+            <xpath expr="//page/field/tree/field[@name='product_qty']" position="before">
+                <field name="calculated_qty" readonly="1"/>
+            </xpath>
+            <xpath expr="//field[@name='origin']" position="after">
+                 <field name="forecast_text"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>
