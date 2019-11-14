@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <template id="report_purchasequotation_document" inherit_id="purchase.report_purchasequotation_document">
-        <xpath expr="//h2[0]" position="replace">
-             <h2 t-if="o.state == 'draft'">Request for Quotation #<span t-field="o.name"/></h2>
+    <template id="fw_report_purchaseorder_document" inherit_id="purchase.report_purchaseorder_document">
+        <xpath expr="//h2[1]" position="replace">
+            <h2 t-if="o.state == 'draft' and not o.forecast_text">Request for Quotation #<span t-field="o.name"/></h2>
+            <h2 t-if="o.state == 'draft' and o.forecast_text"><span t-field="o.forecast_text"/></h2>
+        </xpath>
+    </template>
+
+    <template id="fw_report_purchasequotation_document" inherit_id="purchase.report_purchasequotation_document">
+        <xpath expr="//h2" position="replace">
+            <h2 t-if="not o.forecast_text">Request for Quotation #<span t-field="o.name"/></h2>
+            <h2 t-if="o.forecast_text"><span t-field="o.forecast_text"/></h2>
         </xpath>
     </template>
 
