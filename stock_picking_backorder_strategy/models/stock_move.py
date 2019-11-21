@@ -7,7 +7,7 @@ from odoo import api, models
 class StockMove(models.Model):
     _inherit = 'stock.move'
 
-    @api.multi
+    @api.model
     def _cancel_remaining_quantities(self):
         to_cancel = self.filtered(lambda m: m.state not in ('done', 'cancel'))
         to_cancel._action_cancel()

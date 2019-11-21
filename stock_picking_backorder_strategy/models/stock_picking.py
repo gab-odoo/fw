@@ -8,7 +8,7 @@ class StockPicking(models.Model):
 
     _inherit = "stock.picking"
 
-    @api.multi
+    @api.model
     def _check_backorder(self):
         self.ensure_one()
         # If strategy == 'manual', let the normal process going on
@@ -16,7 +16,7 @@ class StockPicking(models.Model):
             return super(StockPicking, self)._check_backorder()
         return False
 
-    @api.multi
+    @api.model
     def _create_backorder(self, backorder_moves=None):
         if backorder_moves is None:
             backorder_moves = []
