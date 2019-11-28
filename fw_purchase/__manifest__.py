@@ -3,7 +3,7 @@
 
 {
     'name': 'fw_purchase',
-    'version': '0.1',
+    'version': '0.2',
     'website': 'https://www.odoo.com/',
     'category': 'fw',
     'sequence': 10,
